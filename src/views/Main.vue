@@ -8,8 +8,10 @@
                 :shrink="shrink"
                 :menu-list="menuList">
                 <div slot="top" class="logo-con">
-                    <img v-show="!shrink"  src="../images/logo.jpg" key="max-logo" />
-                    <img v-show="shrink" src="../images/logo-min.jpg" key="min-logo" />
+                    <span v-show="!shrink" key="max-logo">Admin Sys</span>
+                    <span v-show="shrink" key="min-logo">ASYS</span>
+                    <!-- <img v-show="!shrink"  src="../images/logo.jpg" key="max-logo" />
+                    <img v-show="shrink" src="../images/logo-min.jpg" key="min-logo" /> -->
                 </div>
             </shrinkable-menu>
         </div>
@@ -56,7 +58,7 @@ export default {
     data () {
         return {
             shrink: false,
-            userName: ''
+            userName: 'Jeffrey Ou'
         };
     },
     computed: {
