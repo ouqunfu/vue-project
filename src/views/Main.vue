@@ -3,7 +3,7 @@
 </style>
 <template>
     <div class="main" :class="{'main-hide-text': shrink}">
-        <div class="sidebar-menu-con" :style="{width: shrink?'60px':'200px', overflow: shrink ? 'visible' : 'auto'}">
+        <div class="sidebar-menu-con" :style="{width: shrink?'60px':'220px', overflow: shrink ? 'visible' : 'auto'}">
             <shrinkable-menu 
                 :shrink="shrink"
                 @on-change="handleSubmenuChange"
@@ -15,9 +15,12 @@
                     <span v-show="!shrink" key="max-logo">Admin Sys</span>
                     <span v-show="shrink" key="min-logo">ASYS</span>
                 </div>
+                <div slot="top" class="search-input" :class="{'search-bind-input': isActive}">
+                    <Input v-model="searchKeywords" icon="ios-search" placeholder="Search..." @on-focus="setSearchFocus" @on-blur="setSearchBlur" @on-click="onsubmit()" @keyup.native.enter="onsubmit" />
+                </div>
             </shrinkable-menu>
         </div>
-        <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'200px'}">
+        <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'220px'}">
             <div class="main-header">
                 <div class="navicon-con">
                     <Button :style="{transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}" type="text" @click="toggleClick">
@@ -56,7 +59,7 @@
                 <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened>
             </div>
         </div>
-        <div class="single-page-con" :style="{left: shrink?'60px':'200px'}">
+        <div class="single-page-con" :style="{left: shrink?'60px':'220px'}">
             <div class="single-page">
                 <keep-alive :include="cachePage">
                     <router-view></router-view>
@@ -89,6 +92,8 @@
         data () {
             return {
                 shrink: false,
+                searchKeywords: '',
+                isActive: false,
                 userName: '',
                 isFullScreen: false,
                 openedSubmenuArr: this.$store.state.app.openedSubmenuArr
@@ -174,6 +179,15 @@
             },
             fullscreenChange (isFullScreen) {
                 // console.log(isFullScreen);
+            },
+            onsubmit: function () {
+                this.searchKeywords = 'test';
+            },
+            setSearchFocus: function () {
+                this.isActive = true;
+            },
+            setSearchBlur: function () {
+                this.isActive = false;
             }
         },
         watch: {
