@@ -50,66 +50,71 @@ export const otherRouter = {
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
 export const appRouter = [
     {
-        path: '/',
+        path: '/index1',
         icon: 'ios-paper',
-        name: 'index',
+        name: 'home',
         title: '首页',
         component: Main,
         children: [
-            { path: 'index', title: 'Page', name: 'page_index', component: resolve => { require(['@/views/home/home.vue'], resolve); } }
+            {
+                path: 'index1',
+                name: 'index1',
+                title: '首页',
+                component: resolve => { require(['@/views/home/home.vue'], resolve); }
+            }
         ]
     },
     {
-        path: '/',
+        path: '/contents',
         icon: 'ios-folder',
         name: 'contents',
         title: '内容',
         component: Main,
         children: [
             {
-                path: 'columns/list',
+                path: 'columns-list',
                 icon: 'ios-paper-outline',
                 name: 'columns-list',
                 title: '栏目管理',
                 component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
             },
             {
-                path: 'cato/list',
+                path: 'cato-list',
                 icon: 'ios-list-outline',
                 name: 'cato-list',
                 title: '分类管理',
                 component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
             },
             {
-                path: 'subjects/list',
+                path: 'subjects-list',
                 icon: 'ios-list-outline',
                 name: 'subjects-list',
                 title: '专题管理',
                 component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
             },
             {
-                path: 'contents/list',
+                path: 'contents-list',
                 icon: 'ios-list-outline',
                 name: 'contents-list',
                 title: '内容管理',
                 component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
             },
             {
-                path: 'url-manage/list',
+                path: 'url-manage-list',
                 icon: 'ios-list-outline',
                 name: 'url-manage-list',
                 title: 'URL规则',
                 component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
             },
             {
-                path: 'gallery/list-dir',
+                path: 'gallery-list-dir',
                 icon: 'ios-list-outline',
                 name: 'gallery-list-dir',
                 title: '图片库',
                 component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
             },
             {
-                path: 'tags/list',
+                path: 'tags-list',
                 icon: 'ios-list-outline',
                 name: 'tags-list',
                 title: '标签管理',
@@ -118,21 +123,21 @@ export const appRouter = [
         ]
     },
     {
-        path: '/',
+        path: '/users',
         icon: 'ios-folder',
         name: 'users',
         title: '用户',
         component: Main,
         children: [
             {
-                path: 'users/list',
+                path: 'users-list',
                 icon: 'ios-paper-outline',
                 name: 'users-list',
                 title: '用户管理',
                 component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
             },
             {
-                path: 'role/list',
+                path: 'role-list',
                 icon: 'ios-list-outline',
                 name: 'role-list',
                 title: '角色管理',
@@ -141,35 +146,35 @@ export const appRouter = [
         ]
     },
     {
-        path: '/',
+        path: '/functions',
         icon: 'ios-folder',
         name: 'functions',
         title: '功能',
         component: Main,
         children: [
             {
-                path: 'notice/list-notice',
+                path: 'list-notice',
                 icon: 'ios-paper-outline',
                 name: 'list-notice',
                 title: '公告管理',
                 component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
             },
             {
-                path: 'notice/list-message',
+                path: 'list-message',
                 icon: 'ios-list-outline',
                 name: 'list-message',
                 title: '留言管理',
                 component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
             },
             {
-                path: 'comments/list',
+                path: 'comments-list',
                 icon: 'ios-paper-outline',
-                name: 'comments',
+                name: 'comments-list',
                 title: '评论管理',
                 component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
             },
             {
-                path: 'data-manage/index',
+                path: 'data-manage',
                 icon: 'ios-list-outline',
                 name: 'data-manage',
                 title: '数据管理',
@@ -208,7 +213,7 @@ export const appRouter = [
         component: Main,
         children: [
             {
-                path: 'index',
+                path: 'site-config',
                 icon: 'ios-paper-outline',
                 name: 'site-config',
                 title: '网站配置',
