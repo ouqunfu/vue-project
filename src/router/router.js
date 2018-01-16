@@ -1,278 +1,312 @@
-import Main from '@/views/Main.vue';
+import Main from '@/views/Main.vue'
 
 // 不作为Main组件的子页面展示的页面单独写，如下
 export const loginRouter = {
-    path: '/login',
-    name: 'login',
-    meta: {
-        title: 'Login - 登录'
-    },
-    component: resolve => { require(['@/views/login.vue'], resolve); }
-};
+  path: '/login',
+  name: 'login',
+  meta: {
+    title: 'Login - 登录'
+  },
+  component: () => import('@/views/login.vue')
+}
 
 export const page404 = {
-    path: '/*',
-    name: 'error-404',
-    meta: {
-        title: '404-页面不存在'
-    },
-    component: resolve => { require(['@/views/error-page/404.vue'], resolve); }
-};
+  path: '/*',
+  name: 'error-404',
+  meta: {
+    title: '404-页面不存在'
+  },
+  component: () => import('@/views/error-page/404.vue')
+}
 
 export const page403 = {
-    path: '/403',
-    meta: {
-        title: '403-权限不足'
-    },
-    name: 'error-403',
-    component: resolve => { require(['@//views/error-page/403.vue'], resolve); }
-};
+  path: '/403',
+  meta: {
+    title: '403-权限不足'
+  },
+  name: 'error-403',
+  component: () => import('@//views/error-page/403.vue')
+}
 
 export const page500 = {
-    path: '/500',
-    meta: {
-        title: '500-服务端错误'
-    },
-    name: 'error-500',
-    component: resolve => { require(['@/views/error-page/500.vue'], resolve); }
-};
+  path: '/500',
+  meta: {
+    title: '500-服务端错误'
+  },
+  name: 'error-500',
+  component: () => import('@/views/error-page/500.vue')
+}
+
+export const preview = {
+  path: '/preview',
+  name: 'preview',
+  component: () => import('@/views/form/article-publish/preview.vue')
+}
+
+export const locking = {
+  path: '/locking',
+  name: 'locking',
+  component: () => import('@/views/main-components/lockscreen/components/locking-page.vue')
+}
 
 // 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
 export const otherRouter = {
-    path: '/',
-    name: 'otherRouter',
-    component: Main,
-    children: [
-        { path: 'home', title: {i18n: 'home'}, name: 'home_index', component: resolve => { require(['@/views/home/home.vue'], resolve); } }
-    ]
-};
+  path: '/',
+  name: 'otherRouter',
+  redirect: '/home',
+  component: Main,
+  children: [
+    {path: 'home', title: {i18n: 'home'}, name: 'home_index', component: () => import('@/views/home/home.vue')},
+    {
+      path: 'ownspace',
+      title: '个人中心',
+      name: 'ownspace_index',
+      component: () => import('@/views/own-space/own-space.vue')
+    },
+    {
+      path: 'order/:order_id',
+      title: '订单详情',
+      name: 'order-info',
+      component: () => import('@/views/advanced-router/component/order-info.vue')
+    }, // 用于展示动态路由
+    {
+      path: 'shopping',
+      title: '购物详情',
+      name: 'shopping',
+      component: () => import('@/views/advanced-router/component/shopping-info.vue')
+    }, // 用于展示带参路由
+    {path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue')}
+  ]
+}
 
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
 export const appRouter = [
-    {
-        path: '/index1',
-        icon: 'ios-paper',
-        name: 'home',
+  {
+    path: '/index1',
+    icon: 'ios-paper',
+    name: 'home',
+    title: '首页',
+    component: Main,
+    children: [
+      {
+        path: 'index1',
+        name: 'index1',
         title: '首页',
-        component: Main,
-        children: [
-            {
-                path: 'index1',
-                name: 'index1',
-                title: '首页',
-                component: resolve => { require(['@/views/home/home.vue'], resolve); }
-            }
-        ]
-    },
-    {
-        path: '/contents',
-        icon: 'ios-folder',
-        name: 'contents',
-        title: '内容',
-        component: Main,
-        children: [
-            {
-                path: 'columns-list',
-                icon: 'ios-paper-outline',
-                name: 'columns-list',
-                title: '栏目管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
-            },
-            {
-                path: 'cato-list',
-                icon: 'ios-list-outline',
-                name: 'cato-list',
-                title: '分类管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            },
-            {
-                path: 'subjects-list',
-                icon: 'ios-list-outline',
-                name: 'subjects-list',
-                title: '专题管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            },
-            {
-                path: 'contents-list',
-                icon: 'ios-list-outline',
-                name: 'contents-list',
-                title: '内容管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            },
-            {
-                path: 'url-manage-list',
-                icon: 'ios-list-outline',
-                name: 'url-manage-list',
-                title: 'URL规则',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            },
-            {
-                path: 'gallery-list-dir',
-                icon: 'ios-list-outline',
-                name: 'gallery-list-dir',
-                title: '图片库',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            },
-            {
-                path: 'tags-list',
-                icon: 'ios-list-outline',
-                name: 'tags-list',
-                title: '标签管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            }
-        ]
-    },
-    {
-        path: '/users',
-        icon: 'ios-folder',
-        name: 'users',
-        title: '用户',
-        component: Main,
-        children: [
-            {
-                path: 'users-list',
-                icon: 'ios-paper-outline',
-                name: 'users-list',
-                title: '用户管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
-            },
-            {
-                path: 'role-list',
-                icon: 'ios-list-outline',
-                name: 'role-list',
-                title: '角色管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            }
-        ]
-    },
-    {
-        path: '/functions',
-        icon: 'ios-folder',
-        name: 'functions',
-        title: '功能',
-        component: Main,
-        children: [
-            {
-                path: 'list-notice',
-                icon: 'ios-paper-outline',
-                name: 'list-notice',
-                title: '公告管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
-            },
-            {
-                path: 'list-message',
-                icon: 'ios-list-outline',
-                name: 'list-message',
-                title: '留言管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            },
-            {
-                path: 'comments-list',
-                icon: 'ios-paper-outline',
-                name: 'comments-list',
-                title: '评论管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
-            },
-            {
-                path: 'data-manage',
-                icon: 'ios-list-outline',
-                name: 'data-manage',
-                title: '数据管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            }
-        ]
-    },
-    {
-        path: '/market',
-        icon: 'ios-folder',
-        name: 'market',
-        title: '营销',
-        component: Main,
-        children: [
-            {
-                path: 'list-seo-rule',
-                icon: 'ios-paper-outline',
-                name: 'list-seo-rule',
-                title: 'SEO管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
-            },
-            {
-                path: 'list-links',
-                icon: 'ios-list-outline',
-                name: 'list-links',
-                title: '友链管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            }
-        ]
-    },
-    {
-        path: '/settings',
-        icon: 'ios-folder',
-        name: 'settings',
-        title: '设置',
-        component: Main,
-        children: [
-            {
-                path: 'site-config',
-                icon: 'ios-paper-outline',
-                name: 'site-config',
-                title: '网站配置',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
-            },
-            {
-                path: 'watermark',
-                icon: 'ios-list-outline',
-                name: 'watermark',
-                title: '水印设置',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            },
-            {
-                path: 'str-filter-list',
-                icon: 'ios-paper-outline',
-                name: 'str-filter-list',
-                title: '敏感词管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
-            },
-            {
-                path: 'attachment',
-                icon: 'ios-list-outline',
-                name: 'attachment',
-                title: '附件设置',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            }
-        ]
-    },
-    {
-        path: '/customs',
-        icon: 'ios-folder',
-        name: 'customs',
-        title: '自定义',
-        component: Main,
-        children: [
-            {
-                path: 'list-content-field',
-                icon: 'ios-paper-outline',
-                name: 'list-content-field',
-                title: '内容字段',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve); }
-            },
-            {
-                path: 'list-user-field',
-                icon: 'ios-list-outline',
-                name: 'list-user-field',
-                title: '用户字段',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve); }
-            }
-        ]
-    }
-];
+        component: resolve => { require(['@/views/home/home.vue'], resolve) }
+      }
+    ]
+  },
+  {
+    path: '/contents',
+    icon: 'ios-folder',
+    name: 'contents',
+    title: '内容',
+    component: Main,
+    children: [
+      {
+        path: 'columns-list',
+        icon: 'ios-paper-outline',
+        name: 'columns-list',
+        title: '栏目管理',
+        component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+      },
+      {
+        path: 'cato-list',
+        icon: 'ios-list-outline',
+        name: 'cato-list',
+        title: '分类管理',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      },
+      {
+        path: 'subjects-list',
+        icon: 'ios-list-outline',
+        name: 'subjects-list',
+        title: '专题管理',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      },
+      {
+        path: 'contents-list',
+        icon: 'ios-list-outline',
+        name: 'contents-list',
+        title: '内容管理',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      },
+      {
+        path: 'url-manage-list',
+        icon: 'ios-list-outline',
+        name: 'url-manage-list',
+        title: 'URL规则',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      },
+      {
+        path: 'gallery-list-dir',
+        icon: 'ios-list-outline',
+        name: 'gallery-list-dir',
+        title: '图片库',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      },
+      {
+        path: 'tags-list',
+        icon: 'ios-list-outline',
+        name: 'tags-list',
+        title: '标签管理',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      }
+    ]
+  },
+  {
+    path: '/users',
+    icon: 'ios-folder',
+    name: 'users',
+    title: '用户',
+    component: Main,
+    children: [
+      {
+        path: 'users-list',
+        icon: 'ios-paper-outline',
+        name: 'users-list',
+        title: '用户管理',
+        component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+      },
+      {
+        path: 'role-list',
+        icon: 'ios-list-outline',
+        name: 'role-list',
+        title: '角色管理',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      }
+    ]
+  },
+  {
+    path: '/functions',
+    icon: 'ios-folder',
+    name: 'functions',
+    title: '功能',
+    component: Main,
+    children: [
+      {
+        path: 'list-notice',
+        icon: 'ios-paper-outline',
+        name: 'list-notice',
+        title: '公告管理',
+        component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+      },
+      {
+        path: 'list-message',
+        icon: 'ios-list-outline',
+        name: 'list-message',
+        title: '留言管理',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      },
+      {
+        path: 'comments-list',
+        icon: 'ios-paper-outline',
+        name: 'comments-list',
+        title: '评论管理',
+        component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+      },
+      {
+        path: 'data-manage',
+        icon: 'ios-list-outline',
+        name: 'data-manage',
+        title: '数据管理',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      }
+    ]
+  },
+  {
+    path: '/market',
+    icon: 'ios-folder',
+    name: 'market',
+    title: '营销',
+    component: Main,
+    children: [
+      {
+        path: 'list-seo-rule',
+        icon: 'ios-paper-outline',
+        name: 'list-seo-rule',
+        title: 'SEO管理',
+        component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+      },
+      {
+        path: 'list-links',
+        icon: 'ios-list-outline',
+        name: 'list-links',
+        title: '友链管理',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      }
+    ]
+  },
+  {
+    path: '/settings',
+    icon: 'ios-folder',
+    name: 'settings',
+    title: '设置',
+    component: Main,
+    children: [
+      {
+        path: 'site-config',
+        icon: 'ios-paper-outline',
+        name: 'site-config',
+        title: '网站配置',
+        component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+      },
+      {
+        path: 'watermark',
+        icon: 'ios-list-outline',
+        name: 'watermark',
+        title: '水印设置',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      },
+      {
+        path: 'str-filter-list',
+        icon: 'ios-paper-outline',
+        name: 'str-filter-list',
+        title: '敏感词管理',
+        component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+      },
+      {
+        path: 'attachment',
+        icon: 'ios-list-outline',
+        name: 'attachment',
+        title: '附件设置',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      }
+    ]
+  },
+  {
+    path: '/customs',
+    icon: 'ios-folder',
+    name: 'customs',
+    title: '自定义',
+    component: Main,
+    children: [
+      {
+        path: 'list-content-field',
+        icon: 'ios-paper-outline',
+        name: 'list-content-field',
+        title: '内容字段',
+        component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+      },
+      {
+        path: 'list-user-field',
+        icon: 'ios-list-outline',
+        name: 'list-user-field',
+        title: '用户字段',
+        component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+      }
+    ]
+  }
+]
 
 // 所有上面定义的路由都要写在下面的routers里
 export const routers = [
-    loginRouter,
-    otherRouter,
-    ...appRouter,
-    page500,
-    page403,
-    page404
-];
+  loginRouter,
+  otherRouter,
+  preview,
+  locking,
+  ...appRouter,
+  page500,
+  page403,
+  page404
+]
