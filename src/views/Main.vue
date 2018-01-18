@@ -15,7 +15,7 @@
                     <span v-show="!shrink" key="max-logo">Admin Sys</span>
                     <span v-show="shrink" key="min-logo">ASYS</span>
                 </div>
-                <div slot="top" class="search-input" :class="{'search-bind-input': isActive}">
+                <div slot="top" class="search-input" :class="{'search-bind-input': isActive}" v-show="!shrink">
                     <Input v-model="searchKeywords" icon="ios-search" placeholder="Search..." @on-focus="setSearchFocus" @on-blur="setSearchBlur" @on-click="onsubmit()" @keyup.native.enter="onsubmit" />
                 </div>
             </shrinkable-menu>
@@ -181,7 +181,7 @@
                 // console.log(isFullScreen);
             },
             onsubmit: function () {
-                this.searchKeywords = 'test';
+//                this.searchKeywords = 'test';
             },
             setSearchFocus: function () {
                 this.isActive = true;
