@@ -128,6 +128,8 @@
         methods: {
             init () {
                 let pathArr = util.setCurrentPath(this, this.$route.name);
+                console.log('-------分割线-----');
+                console.log(pathArr);
                 this.$store.commit('updateMenulist');
                 if (pathArr.length >= 2) {
                     this.$store.commit('addOpenSubmenu', pathArr[1].name);
@@ -181,7 +183,7 @@
                 // console.log(isFullScreen);
             },
             onsubmit: function () {
-//                this.searchKeywords = 'test';
+                // this.searchKeywords = 'test';
             },
             setSearchFocus: function () {
                 this.isActive = true;

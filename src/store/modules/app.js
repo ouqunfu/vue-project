@@ -135,6 +135,7 @@ const app = {
             }
             state.pageOpenedList.splice(get.index, 1, openedPage);
             localStorage.pageOpenedList = JSON.stringify(state.pageOpenedList);
+            console.log('pageOpenedList');
         },
         clearAllTags (state) {
             state.pageOpenedList.splice(1);
@@ -163,6 +164,7 @@ const app = {
         },
         setOpenedList (state) {
             state.pageOpenedList = localStorage.pageOpenedList ? JSON.parse(localStorage.pageOpenedList) : [otherRouter.children[0]];
+            state.pageOpenedList = [otherRouter.children[5]];
         },
         setCurrentPath (state, pathArr) {
             state.currentPath = pathArr;
