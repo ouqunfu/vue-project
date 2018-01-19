@@ -76,7 +76,7 @@ export const otherRouter = {
             component: () => import('@/views/advanced-router/component/shopping-info.vue')
         }, // 用于展示带参路由
         {path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue')},
-        {path: 'home-2', title: {i18n: 'home'}, name: 'home_index_2', component: () => import('@/views/home/home-2.vue')},
+        {path: 'home-2', title: 'index', name: 'home_index_2', component: () => import('@/views/home/home-2.vue')},
     ]
 }
 
