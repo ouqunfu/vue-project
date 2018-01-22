@@ -4,40 +4,50 @@
 <template>
     <div class="main" :class="{'main-hide-text': shrink}">
         <div class="sidebar-menu-con" :style="{width: shrink?'60px':'220px', overflow: shrink ? 'visible' : 'auto'}">
-            <shrinkable-menu 
-                :shrink="shrink"
-                @on-change="handleSubmenuChange"
-                :theme="menuTheme" 
-                :before-push="beforePush"
-                :open-names="openedSubmenuArr"
-                :menu-list="menuList">
+            <shrinkable-menu
+                    :shrink="shrink"
+                    @on-change="handleSubmenuChange"
+                    :theme="menuTheme"
+                    :before-push="beforePush"
+                    :open-names="openedSubmenuArr"
+                    :menu-list="menuList">
                 <div slot="top" class="logo-con">
-                    <span v-show="!shrink" key="max-logo">Admin Sys</span>
-                    <span v-show="shrink" key="min-logo">ASYS</span>
+                    <div>
+                        <span v-show="!shrink" key="max-logo">Admin Sys</span>
+                        <span v-show="shrink" key="min-logo">ASYS</span>
+                    </div>
+                </div>
+                <div slot="top" :class="{'side-user-info-shrink': shrink}" class="side-user-info-p">
+                    <Avatar :src="avatorPath"></Avatar>
+                    <div class="side-user-info" v-show="!shrink">
+                        <b class="">Jeffrey</b>
+                        <p>super admin</p>
+                    </div>
                 </div>
                 <div slot="top" class="search-input" :class="{'search-bind-input': isActive}" v-show="!shrink">
-                    <Input v-model="searchKeywords" icon="ios-search" placeholder="Search..." @on-focus="setSearchFocus" @on-blur="setSearchBlur" @on-click="onsubmit()" @keyup.native.enter="onsubmit" />
+                    <Input v-model="searchKeywords" icon="ios-search" placeholder="Search..." @on-focus="setSearchFocus"
+                           @on-blur="setSearchBlur" @on-click="onsubmit()" @keyup.native.enter="onsubmit"/>
                 </div>
             </shrinkable-menu>
         </div>
         <div class="main-header-con" :style="{paddingLeft: shrink?'60px':'220px'}">
             <div class="main-header">
                 <div class="navicon-con">
-                    <Button :style="{transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}" type="text" @click="toggleClick">
+                    <Button :style="{transform: 'rotateZ(' + (this.shrink ? '-90' : '0') + 'deg)'}" type="text"
+                            @click="toggleClick">
                         <Icon type="navicon" size="32"></Icon>
                     </Button>
                 </div>
                 <!--<div class="header-middle-con">-->
-                    <!--<div class="main-breadcrumb">-->
-                        <!--<breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>-->
-                    <!--</div>-->
+                <!--<div class="main-breadcrumb">-->
+                <!--<breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>-->
+                <!--</div>-->
                 <!--</div>-->
                 <div class="header-avator-con">
                     <full-screen v-model="isFullScreen" @on-change="fullscreenChange"></full-screen>
                     <lock-screen></lock-screen>
                     <message-tip v-model="mesCount"></message-tip>
-                    <theme-switch></theme-switch>
-                    
+
                     <div class="user-dropdown-menu-con">
                         <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
                             <Dropdown transfer trigger="click" @on-click="handleClickUserDropdown">
@@ -78,7 +88,7 @@
     import themeSwitch from './main-components/theme-switch/theme-switch.vue';
     import Cookies from 'js-cookie';
     import util from '@/libs/util.js';
-    
+
     export default {
         components: {
             shrinkableMenu,
@@ -128,8 +138,6 @@
         methods: {
             init () {
                 let pathArr = util.setCurrentPath(this, this.$route.name);
-                console.log('-------分割线-----');
-                console.log(pathArr);
                 this.$store.commit('updateMenulist');
                 if (pathArr.length >= 2) {
                     this.$store.commit('addOpenSubmenu', pathArr[1].name);

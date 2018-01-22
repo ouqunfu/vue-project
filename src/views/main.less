@@ -91,14 +91,17 @@
         }
     }
     &-header{
-        height: 60px;
-        background: #fff;
+        min-height: 60px;
+        background: #3c8dbc;
         box-shadow: 0 2px 1px 1px rgba(100,100,100,.1);
         position: relative;
         z-index: 11;
         .navicon-con{
             margin: 6px;
             display: inline-block;
+        }
+        button{
+            color: #fff;
         }
         .header-middle-con{
             position: absolute;
@@ -154,6 +157,10 @@
                         overflow: hidden;
                         text-overflow: ellipsis;
                         text-align: right;
+                        color: #f6f6f6;
+                    }
+                    i{
+                        color: #f6f6f6;
                     }
                 }
                 &-innercon{
@@ -206,13 +213,51 @@
     transition: transform .3s;
 }
 .logo-con{
-    padding: 8px;
+    height: 60px;
     text-align: center;
+    background: #367fa9;
     color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    div{
+        font-weight: 700;
+        line-height: 60px;
+    }
     span{
         height: 44px;
         width: auto;
         font-size: 18px;
+    }
+}
+.side-user-info-p{
+    margin-top: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    span{
+        background: #619fe7;
+        margin-left: 10px;
+        width: 46px;
+        height: 46px;
+        border-radius: 23px;
+    }
+}
+.side-user-info{
+    display: inline-block;
+    color: #fff;
+    vertical-align: middle;
+    margin-left: 10px;
+    b{
+        font-size: 14px;
+    }
+}
+.side-user-info-shrink{
+    text-align: center;
+    color: #495060;
+    span{
+        margin: 0 auto;
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
     }
 }
 .search-input{
