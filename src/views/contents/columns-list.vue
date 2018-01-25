@@ -4,7 +4,7 @@
             <i-col :md="24" :lg="24">
                 <i-card dis-hover>
                     <i-row :gutter="10" :style="{marginBottom: '10px'}">
-                        <a href="#/contents/columns-list">
+                        <a href="#/contents/add-column">
                             <i-button type="primary">添加栏目</i-button>
                         </a>
                     </i-row>
