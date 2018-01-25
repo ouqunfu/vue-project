@@ -12,6 +12,11 @@ const RouterConfig = {
     // mode: 'history',
     routes: routers
 };
+// 加载进度条配置
+iView.LoadingBar.config({
+    color: '#fff',
+    failedColor: '#f0ad4e'
+});
 
 export const router = new VueRouter(RouterConfig);
 

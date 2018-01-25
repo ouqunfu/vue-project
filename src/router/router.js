@@ -94,7 +94,7 @@ export const appRouter = [
                 icon: 'ios-list-outline',
                 name: 'columns-list',
                 title: '栏目管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+                component: resolve => { require(['@/views/contents/columns-list.vue'], resolve) }
             },
             {
                 path: 'cato-list',
