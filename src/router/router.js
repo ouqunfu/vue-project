@@ -80,6 +80,7 @@ export const otherRouter = {
         {path: 'contents/add-column', title: '添加栏目', name: 'add-column', component: () => import('@/views/contents/add-column.vue')},
         {path: 'contents/add-cato', title: '添加分类', name: 'add-cato', component: () => import('@/views/contents/add-cato.vue')},
         {path: 'contents/add-subject', title: '添加专题', name: 'add-subject', component: () => import('@/views/contents/add-subject.vue')},
+        {path: 'contents/add-content', title: '添加内容', name: 'add-content', component: () => import('@/views/contents/add-content.vue')},
     ]
 }
 
@@ -118,7 +119,7 @@ export const appRouter = [
                 icon: 'document-text',
                 name: 'contents-list',
                 title: '内容管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/contents/contents-list.vue'], resolve) }
             },
             {
                 path: 'url-manage-list',
