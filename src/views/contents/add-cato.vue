@@ -7,26 +7,26 @@
                         <i-row :gutter="10" :style="{marginLeft: '50px'}">
                             <i-row :gutter="10">
                                 <i-col :xs="24" :sm="15" :md="9">
-                                    <i-form-item label="所属栏目">
+                                    <i-form-item label="所属分类">
                                         <i-select v-model="formItem.parent" transfer>
                                             <i-option value="0">请选择...</i-option>
                                         </i-select>
                                     </i-form-item>
                                 </i-col>
                                 <i-col :xs="3" :sm="2" :md="1" class="tooltips-custom">
-                                    <i-tooltip content="如果为一级栏目，不需要选择！" placement="left">
+                                    <i-tooltip content="如果为顶级分类，不需要选择！" placement="left">
                                         <i-icon type="information-circled"></i-icon>
                                     </i-tooltip>
                                 </i-col>
                             </i-row>
                             <i-row :gutter="10">
                                 <i-col :xs="24" :sm="12" :md="9">
-                                    <i-form-item label="栏目名称">
+                                    <i-form-item label="分类名称">
                                         <i-input name="name" placeholder=""></i-input>
                                     </i-form-item>
                                 </i-col>
                                 <i-col :xs="3" :sm="2" :md="1" class="tooltips-custom">
-                                    <i-tooltip content="请填写栏目名称！" placement="left">
+                                    <i-tooltip content="请填写分类名称！" placement="left">
                                         <i-icon type="information-circled"></i-icon>
                                     </i-tooltip>
                                 </i-col>
@@ -44,21 +44,6 @@
                                             <p>“别名”是在URL中使用的别称，它可以令URL<br/>更美观。
                                                 通常使用小写，只能包含字母，<br/>数字和连字符（-）。</p>
                                         </div>
-                                    </i-tooltip>
-                                </i-col>
-                            </i-row>
-                            <i-row :gutter="10">
-                                <i-col :xs="24" :sm="12" :md="9">
-                                    <i-form-item label="在导航中显示">
-                                        <i-select v-model="formItem.isNav" transfer>
-                                            <i-option value="1">显示</i-option>
-                                            <i-option value="0">不显示</i-option>
-                                        </i-select>
-                                    </i-form-item>
-                                </i-col>
-                                <i-col :xs="3" :sm="2" :md="1" class="tooltips-custom">
-                                    <i-tooltip content="是否在导航栏中显示！" placement="left">
-                                        <i-icon type="information-circled"></i-icon>
                                     </i-tooltip>
                                 </i-col>
                             </i-row>
@@ -170,7 +155,7 @@
                             </i-row>
                             <i-row :gutter="10">
                                 <i-col :xs="24" :sm="12" :md="9">
-                                    <i-form-item label="栏目说明图片">
+                                    <i-form-item label="分类说明图片">
                                         <i-upload action="http://" accept="image/*">
                                             <i-button type="ghost" icon="ios-cloud-upload-outline">点击上传</i-button>
                                         </i-upload>
@@ -180,7 +165,7 @@
                                     <i-tooltip placement="left">
                                         <i-icon type="information-circled"></i-icon>
                                         <div slot="content">
-                                            栏目banner功能,需在模板中<br/>调用显示！
+                                            分类banner功能,需在模板中<br/>调用显示！
                                         </div>
                                     </i-tooltip>
                                 </i-col>
@@ -202,69 +187,13 @@
     import tinymceEditer from '../common-components/tinymce-editer.vue';
 
     export default {
-        name: 'add-column',
+        name: 'add-cato',
         components: {
             auth,
             tinymceEditer
         },
         data () {
             return {
-                columns: [
-                    {
-                        title: '用户组',
-                        key: 'userGroup'
-                    },
-                    {
-                        title: '浏览',
-                        key: 'browse',
-                        render: (h, params) => {
-                            return h('div', [
-                                h('checkbox', {
-                                    props: {
-                                        type: 'default'
-                                    },
-                                    style: {
-                                        width: '60px',
-                                        height: '30px',
-                                        'padding-left': '5px'
-                                    }
-                                })
-                            ]);
-                        }
-                    },
-                    {
-                        title: '下载',
-                        type: 'download',
-                        render: (h, params) => {
-                            return h('div', [
-                                h('checkbox', {
-                                    props: {
-                                        type: 'default'
-                                    },
-                                    style: {
-                                        width: '60px',
-                                        height: '30px',
-                                        'padding-left': '5px'
-                                    }
-                                })
-                            ]);
-                        }
-                    }
-                ],
-                data: [
-                    {
-                        userGroup: '管理员'
-                    },
-                    {
-                        userGroup: '文章管理员'
-                    },
-                    {
-                        userGroup: '一般会员'
-                    },
-                    {
-                        userGroup: '游客'
-                    }
-                ],
                 formItem: {
                     parent: '0',
                     isNav: '1',

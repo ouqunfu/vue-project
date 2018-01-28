@@ -135,7 +135,6 @@ const app = {
             }
             state.pageOpenedList.splice(get.index, 1, openedPage);
             localStorage.pageOpenedList = JSON.stringify(state.pageOpenedList);
-            console.log('pageOpenedList');
         },
         clearAllTags (state) {
             state.pageOpenedList.splice(1);
