@@ -81,6 +81,7 @@ export const otherRouter = {
         {path: 'contents/add-cato', title: '添加分类', name: 'add-cato', component: () => import('@/views/contents/add-cato.vue')},
         {path: 'contents/add-subject', title: '添加专题', name: 'add-subject', component: () => import('@/views/contents/add-subject.vue')},
         {path: 'contents/add-content', title: '添加内容', name: 'add-content', component: () => import('@/views/contents/add-content.vue')},
+        {path: 'contents/add-url', title: '添加URL规则', name: 'add-url', component: () => import('@/views/contents/add-url.vue')},
     ]
 }
 
@@ -126,7 +127,7 @@ export const appRouter = [
                 icon: 'link',
                 name: 'url-manage-list',
                 title: 'URL规则',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/contents/url-manage-list.vue'], resolve) }
             },
             {
                 path: 'gallery-list-dir',
