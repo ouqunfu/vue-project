@@ -82,6 +82,7 @@ export const otherRouter = {
         {path: 'contents/add-subject', title: '添加专题', name: 'add-subject', component: () => import('@/views/contents/add-subject.vue')},
         {path: 'contents/add-content', title: '添加内容', name: 'add-content', component: () => import('@/views/contents/add-content.vue')},
         {path: 'contents/add-url', title: '添加URL规则', name: 'add-url', component: () => import('@/views/contents/add-url.vue')},
+        {path: 'contents/gallery-list-img', title: '图片列表', name: 'gallery-list-img', component: () => import('@/views/contents/gallery-list-img.vue')},
     ]
 }
 
@@ -134,7 +135,7 @@ export const appRouter = [
                 icon: 'android-image',
                 name: 'gallery-list-dir',
                 title: '图片库',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/contents/gallery-list-dir.vue'], resolve) }
             },
             {
                 path: 'tags-list',
