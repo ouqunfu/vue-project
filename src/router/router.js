@@ -83,6 +83,7 @@ export const otherRouter = {
         {path: 'contents/add-content', title: '添加内容', name: 'add-content', component: () => import('@/views/contents/add-content.vue')},
         {path: 'contents/add-url', title: '添加URL规则', name: 'add-url', component: () => import('@/views/contents/add-url.vue')},
         {path: 'contents/gallery-list-img', title: '图片列表', name: 'gallery-list-img', component: () => import('@/views/contents/gallery-list-img.vue')},
+        {path: 'contents/add-tag', title: '添加标签', name: 'add-tag', component: () => import('@/views/contents/add-tag.vue')},
     ]
 }
 
@@ -142,7 +143,7 @@ export const appRouter = [
                 icon: 'ios-pricetags',
                 name: 'tags-list',
                 title: '标签管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/contents/tags-list.vue'], resolve) }
             }
         ]
     },
