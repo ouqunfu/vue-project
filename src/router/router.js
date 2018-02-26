@@ -84,6 +84,7 @@ export const otherRouter = {
         {path: 'contents/add-url', title: '添加URL规则', name: 'add-url', component: () => import('@/views/contents/add-url.vue')},
         {path: 'contents/gallery-list-img', title: '图片列表', name: 'gallery-list-img', component: () => import('@/views/contents/gallery-list-img.vue')},
         {path: 'contents/add-tag', title: '添加标签', name: 'add-tag', component: () => import('@/views/contents/add-tag.vue')},
+        {path: 'users/add-user', title: '添加用户', name: 'add-user', component: () => import('@/views/users/add-user.vue')},
     ]
 }
 
@@ -159,7 +160,7 @@ export const appRouter = [
                 icon: 'ios-personadd',
                 name: 'users-list',
                 title: '用户管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+                component: resolve => { require(['@/views/users/users-list.vue'], resolve) }
             },
             {
                 path: 'role-list',

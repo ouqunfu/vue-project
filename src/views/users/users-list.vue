@@ -4,8 +4,8 @@
             <i-col :md="24" :lg="24">
                 <i-card dis-hover>
                     <i-row :gutter="10" :style="{marginBottom: '10px'}">
-                        <a href="#/contents/add-tag">
-                            <i-button type="primary">添加标签</i-button>
+                        <a href="#/users/add-user">
+                            <i-button type="primary">添加用户</i-button>
                         </a>
                     </i-row>
                     <i-row :gutter="10" :style="{marginBottom: '10px'}">
@@ -24,33 +24,28 @@
 
 <script>
     export default {
-        name: 'tags-list',
+        name: 'users-list',
         data () {
             return {
                 loading: false,
                 columns: [
-                    {
-                        type: 'selection',
-                        width: 60,
-                        align: 'center'
-                    },
                     {
                         title: 'ID',
                         key: 'id',
                         width: 100
                     },
                     {
-                        title: '别名',
+                        title: '用户名',
                         key: 'name',
-                        width: 150
+                        width: 200
                     },
                     {
-                        title: '名称',
+                        title: '昵称',
                         key: 'name',
-                        width: 150
+                        width: 200
                     },
                     {
-                        title: '描述',
+                        title: '用户组',
                         key: 'examples'
                     },
                     {
@@ -104,13 +99,8 @@
                 data: [
                     {
                         id: 1,
-                        name: 'John Brown11',
-                        examples: '/news/china/1000.html',
-                    },
-                    {
-                        id: 2,
-                        name: 'John Brown222',
-                        examples: 'list-1-1-1.html',
+                        name: 'admin',
+                        examples: '超级管理员'
                     }
                 ]
             };
