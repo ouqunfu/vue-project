@@ -85,6 +85,7 @@ export const otherRouter = {
         {path: 'contents/gallery-list-img', title: '图片列表', name: 'gallery-list-img', component: () => import('@/views/contents/gallery-list-img.vue')},
         {path: 'contents/add-tag', title: '添加标签', name: 'add-tag', component: () => import('@/views/contents/add-tag.vue')},
         {path: 'users/add-user', title: '添加用户', name: 'add-user', component: () => import('@/views/users/add-user.vue')},
+        {path: 'users/add-role', title: '添加角色', name: 'add-role', component: () => import('@/views/users/add-role.vue')},
     ]
 }
 
@@ -167,7 +168,7 @@ export const appRouter = [
                 icon: 'person-stalker',
                 name: 'role-list',
                 title: '角色管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/users/role-list.vue'], resolve) }
             }
         ]
     },
