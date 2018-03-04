@@ -192,7 +192,7 @@ export const appRouter = [
                 icon: 'chatbubble',
                 name: 'list-message',
                 title: '留言管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/functions/message-list.vue'], resolve) }
             },
             {
                 path: 'comments-list',
