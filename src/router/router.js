@@ -206,7 +206,7 @@ export const appRouter = [
                 icon: 'social-buffer',
                 name: 'data-manage',
                 title: '数据管理',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/functions/data-manage.vue'], resolve) }
             }
         ]
     },
