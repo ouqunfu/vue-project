@@ -199,7 +199,7 @@ export const appRouter = [
                 icon: 'chatbox',
                 name: 'comments-list',
                 title: '评论管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+                component: resolve => { require(['@/views/functions/comments-list.vue'], resolve) }
             },
             {
                 path: 'data-manage',
