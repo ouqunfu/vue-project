@@ -86,6 +86,7 @@ export const otherRouter = {
         {path: 'contents/add-tag', title: '添加标签', name: 'add-tag', component: () => import('@/views/contents/add-tag.vue')},
         {path: 'users/add-user', title: '添加用户', name: 'add-user', component: () => import('@/views/users/add-user.vue')},
         {path: 'users/add-role', title: '添加角色', name: 'add-role', component: () => import('@/views/users/add-role.vue')},
+        {path: 'functions/add-notice', title: '添加公告', name: 'add-notice', component: () => import('@/views/functions/add-notice.vue')},
     ]
 }
 
@@ -184,7 +185,7 @@ export const appRouter = [
                 icon: 'clipboard',
                 name: 'list-notice',
                 title: '公告管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+                component: resolve => { require(['@/views/functions/notice-list.vue'], resolve) }
             },
             {
                 path: 'list-message',
