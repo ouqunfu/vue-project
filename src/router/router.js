@@ -87,6 +87,7 @@ export const otherRouter = {
         {path: 'users/add-user', title: '添加用户', name: 'add-user', component: () => import('@/views/users/add-user.vue')},
         {path: 'users/add-role', title: '添加角色', name: 'add-role', component: () => import('@/views/users/add-role.vue')},
         {path: 'functions/add-notice', title: '添加公告', name: 'add-notice', component: () => import('@/views/functions/add-notice.vue')},
+        {path: 'market/add-seo-rule', title: '添加SEO规则', name: 'add-seo-rule', component: () => import('@/views/market/add-seo-rule.vue')},
     ]
 }
 
@@ -222,7 +223,7 @@ export const appRouter = [
                 icon: 'arrow-graph-up-right',
                 name: 'list-seo-rule',
                 title: 'SEO管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+                component: resolve => { require(['@/views/market/seo-rule-list.vue'], resolve) }
             },
             {
                 path: 'list-links',
