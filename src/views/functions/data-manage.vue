@@ -29,10 +29,53 @@
                     </i-form>
                 </i-tab-pane>
                 <i-tab-pane label="还原数据库">
+                    <i-row :gutter="10" :style="{marginLeft: '20px', marginRight: '20px'}">
+                        <i-row :gutter="10" :style="{marginBottom: '10px'}">
+                            <i-table :loading="loading" border :columns="restore_columns" :data="restore_data"></i-table>
+                        </i-row>
+                        <i-row :gutter="10" :style="{marginBottom: '10px'}">
+                            <i-button type="primary" size="large">删除</i-button>
+                        </i-row>
+                    </i-row>
                 </i-tab-pane>
                 <i-tab-pane label="日志管理">
+                    <i-row :gutter="10" :style="{marginLeft: '20px', marginRight: '20px'}">
+                        <i-row :gutter="10" :style="{marginBottom: '10px'}">
+                            <i-table :loading="loading" border :columns="log_columns" :data="log_data"></i-table>
+                            <div style="margin: 10px 0 10px 0;overflow: hidden">
+                                <div style="float: left;">
+                                    <a href="javascript:void(0)">
+                                        <i-button>清空</i-button>
+                                    </a>
+                                </div>
+                                <div style="float: right;">
+                                    <i-page :total="50" :current="1" show-total></i-page>
+                                </div>
+                            </div>
+                        </i-row>
+                    </i-row>
                 </i-tab-pane>
                 <i-tab-pane label="备份整站">
+                    <i-row :gutter="10" :style="{marginLeft: '20px', marginRight: '20px'}">
+                        <i-row :gutter="10" :style="{marginBottom: '10px'}">
+                            <a href="javascript:void(0)">
+                                <i-button type="primary">开始备份</i-button>
+                            </a>
+                        </i-row>
+                        <i-row :gutter="10" :style="{marginBottom: '10px'}">
+                            <i-table :loading="loading" border :columns="backup_columns" :data="backup_data"></i-table>
+                            <div style="margin: 10px 0 10px 0;overflow: hidden">
+                                <div style="float: left;">
+                                    <a href="javascript:void(0)">
+                                        <i-button>删除</i-button>
+                                    </a>
+                                </div>
+                                <div style="float: right;">
+                                    <i-page :total="50" :current="1" show-total></i-page>
+                                </div>
+                            </div>
+                        </i-row>
+                    </i-row>
                 </i-tab-pane>
             </i-tabs>
 
@@ -80,6 +123,134 @@
                         size: '0k',
                         name: 'ws_post',
                         alias: '111'
+                    }
+                ],
+                restore_columns: [
+                    {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+                    },
+                    {
+                        title: '档案',
+                        key: 'name'
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        render: (h, params) => {
+                            return h('div', [
+                                h('Button', {
+                                    props: {
+                                        type: 'default',
+                                        size: 'small'
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+
+                                        }
+                                    }
+                                }, '还原')
+                            ]);
+                        }
+                    }
+                ],
+                restore_data: [
+                    {
+                        name: 'backup'
+                    },
+                    {
+                        name: 'message'
+                    }
+                ],
+                log_columns: [
+                    {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+                    },
+                    {
+                        title: 'ID',
+                        key: 'id'
+                    },
+                    {
+                        title: '用户名',
+                        key: 'name'
+                    },
+                    {
+                        title: '操作时间',
+                        key: 'op_time'
+                    },
+                    {
+                        title: 'IP',
+                        key: 'ip'
+                    },
+                    {
+                        title: '操作方法',
+                        key: 'method'
+                    },
+                    {
+                        title: '说明',
+                        key: 'des'
+                    }
+                ],
+                log_data: [
+                    {
+                        id: '1',
+                        op_time: '2018-03-05 14:11:31',
+                        name: '',
+                        ip: '192.168.139.1',
+                        method: '后台登录',
+                        des: ''
+                    },
+                    {
+                        id: '2',
+                        op_time: '2018-03-05 14:11:21',
+                        name: '',
+                        ip: '192.168.139.1',
+                        method: '后台登录',
+                        des: ''
+                    }
+                ],
+                backup_columns: [
+                    {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+                    },
+                    {
+                        title: '档案',
+                        key: 'name'
+                    },
+                    {
+                        title: '操作',
+                        key: 'action',
+                        render: (h, params) => {
+                            return h('div', [
+                                h('Button', {
+                                    props: {
+                                        type: 'default',
+                                        size: 'small'
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+
+                                        }
+                                    }
+                                }, '下载')
+                            ]);
+                        }
+                    }
+                ],
+                backup_data: [
+                    {
+                        name: '20180305170635z6xnn184.zip'
                     }
                 ],
                 cityList: [
