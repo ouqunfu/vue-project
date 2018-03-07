@@ -276,7 +276,5 @@
 </script>
 
 <style scoped>
-    .tooltips-custom {
-        padding-top: 5px;
-    }
+
 </style>

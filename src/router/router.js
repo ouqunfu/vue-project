@@ -249,7 +249,7 @@ export const appRouter = [
                 icon: 'ios-world-outline',
                 name: 'site-config',
                 title: '网站配置',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+                component: resolve => { require(['@/views/settings/site-config.vue'], resolve) }
             },
             {
                 path: 'watermark',
