@@ -47,7 +47,7 @@
                             <i-tooltip placement="left">
                                 <i-icon type="information-circled"></i-icon>
                                 <div slot="content">
-                                    <p>请选择SEO规则所属模块！</p>
+                                    <p>请选择SEO规则类型！</p>
                                 </div>
                             </i-tooltip>
                         </i-col>
@@ -56,7 +56,7 @@
                     <i-row :gutter="10">
                         <i-col :xs="24" :sm="12" :md="9">
                             <i-form-item label="示例">
-                                <i-input type="textarea" :autosize="{minRows: 5,maxRows: 8}"></i-input>
+                                <i-input type="textarea" :autosize="{minRows: 5,maxRows: 8}" placeholder="李宁新款男子半掌气垫潮流休闲鞋Bubble Up男运动鞋GLAL007  市场价359.000元，名鞋库价仅179.000元，全场3-7折优惠。购买正品李宁 GLAL007-6，了解李宁GLAL007-6商品信息就上名鞋库。"></i-input>
                             </i-form-item>
                         </i-col>
                         <i-col :xs="3" :sm="2" :md="1" class="tooltips-custom">
@@ -69,11 +69,11 @@
                     <i-row :gutter="10">
                         <i-col :xs="24" :sm="12" :md="9">
                             <i-form-item label="规则内容">
-                                <i-input type="textarea" :autosize="{minRows: 5,maxRows: 8}" v-model="selectVar"></i-input>
+                                <i-input type="textarea" :autosize="{minRows: 5,maxRows: 8}" v-model="selectVar" element-id="why" placeholder="%title%休闲鞋%tags%男运动鞋%tags%  市场价%price%元，%siteName%价仅%price%元，全场3-7折优惠。购买正品%title% %tags%，了解%title%%tags%商品信息就上%siteName%。"></i-input>
                             </i-form-item>
                         </i-col>
                         <i-col :xs="3" :sm="2" :md="1" class="tooltips-custom">
-                            <i-tooltip content="规则内容！" placement="left">
+                            <i-tooltip content="请填写SEO规则内容！" placement="left">
                                 <i-icon type="information-circled"></i-icon>
                             </i-tooltip>
                         </i-col>
@@ -174,19 +174,7 @@
                 if (this.selectVar) {
                     let arrUrlRule = this.selectVar.split('/');
                     let tempArr = [];
-                    let flag = -1;
-                    for (let i = 0; i < arrUrlRule.length; i++) {
-                        if (selectTag === arrUrlRule[i]) {
-                            flag = i;
-                        }
-                    }
-                    if (flag > -1) {
-                        arrUrlRule.splice(flag, 1);
-                        this.buttonData[index].isSelect = false;
-                    } else {
-                        arrUrlRule.push(selectTag);
-                        this.buttonData[index].isSelect = true;
-                    }
+                    arrUrlRule.push(selectTag);
                     for (let i = 0; i < arrUrlRule.length; i++) {
                         if (arrUrlRule[i]) {
                             tempArr.push(arrUrlRule[i]);
@@ -195,7 +183,6 @@
                     this.selectVar = tempArr.join('/');
                 } else {
                     this.selectVar = selectTag;
-                    this.buttonData[index].isSelect = true;
                 }
                 this.selectVar = this.selectVar ? '/' + this.selectVar : this.selectVar;
             }
@@ -204,9 +191,5 @@
 </script>
 
 <style scoped>
-    .selectedVar {
-        color: #fff;
-        background-color: #2d8cf0;
-        border-color: #2d8cf0;
-    }
+
 </style>
