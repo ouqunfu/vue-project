@@ -89,6 +89,8 @@ export const otherRouter = {
         {path: 'functions/add-notice', title: '添加公告', name: 'add-notice', component: () => import('@/views/functions/add-notice.vue')},
         {path: 'market/add-seo-rule', title: '添加SEO规则', name: 'add-seo-rule', component: () => import('@/views/market/add-seo-rule.vue')},
         {path: 'market/add-link', title: '添加友情链接', name: 'add-link', component: () => import('@/views/market/add-link.vue')},
+        {path: 'market/links-cato-list', title: '管理友链分类', name: 'links-cato-list', component: () => import('@/views/market/links-cato-list.vue')},
+        {path: 'market/add-links-cato', title: '添加友链分类', name: 'add-links-cato', component: () => import('@/views/market/add-links-cato.vue')},
     ]
 }
 
