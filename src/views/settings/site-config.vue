@@ -210,7 +210,6 @@
 
 <script>
     export default {
-        name: 'site',
         data () {
             return {
                 formItem: {

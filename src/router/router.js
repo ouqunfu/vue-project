@@ -256,7 +256,7 @@ export const appRouter = [
                 icon: 'bookmark',
                 name: 'watermark',
                 title: '水印设置',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/settings/watermark.vue'], resolve) }
             },
             {
                 path: 'str-filter-list',
