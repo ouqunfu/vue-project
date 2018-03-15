@@ -185,6 +185,7 @@
                     this.selectVar = selectTag;
                 }
                 this.selectVar = this.selectVar ? '/' + this.selectVar : this.selectVar;
+                // 修改使用可编辑div，实现可拖拽效果
             }
         }
     };
