@@ -55,7 +55,7 @@
                             <i-row :gutter="10">
                                 <i-col :xs="24" :sm="12" :md="9">
                                     <i-form-item label="添加位置">
-                                        <i-select v-model="formItem.isShow" transfer>
+                                        <i-select v-model="isShow" transfer placement="top">
                                             <i-option v-for="item in pos" :value="item.value"
                                                       :key="item.label"></i-option>
                                         </i-select>
@@ -67,11 +67,17 @@
                                     <i-form-item label="">
                                         <table class="table pos-table-l" cellspacing="0">
                                             <tbody>
-                                                <tr v-for="(item, index) in data">
-                                                    <td @click="selectPos(item.num1)" :class="{pos_select: item.num1.isSelected}">{{item.num1.value}}</td>
-                                                    <td @click="selectPos(item.num2)" :class="{pos_select: item.num2.isSelected}">{{item.num2.value}}</td>
-                                                    <td @click="selectPos(item.num3)" :class="{pos_select: item.num3.isSelected}">{{item.num3.value}}</td>
-                                                </tr>
+                                            <tr v-for="(item, index) in data">
+                                                <td @click="selectPos(item.num1)"
+                                                    :class="{pos_select: item.num1.isSelected}">{{item.num1.value}}
+                                                </td>
+                                                <td @click="selectPos(item.num2)"
+                                                    :class="{pos_select: item.num2.isSelected}">{{item.num2.value}}
+                                                </td>
+                                                <td @click="selectPos(item.num3)"
+                                                    :class="{pos_select: item.num3.isSelected}">{{item.num3.value}}
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </i-form-item>
@@ -93,9 +99,9 @@
                 loading: false,
                 formItem: {
                     parent: '0',
-                    isNav: '0',
-                    isShow: 5
+                    isNav: '0'
                 },
+                isShow: 5,
                 data: [
                     {
                         num1: {value: 1, isSelected: false},
@@ -156,9 +162,9 @@
         methods: {
             init: function () {
                 this.data.forEach(function (item) {
-                    item.num1.isSelected = this.formItem.isShow === item.num1.value ? true : false;
-                    item.num2.isSelected = this.formItem.isShow === item.num2.value ? true : false;
-                    item.num3.isSelected = this.formItem.isShow === item.num3.value ? true : false;
+                    item.num1.isSelected = this.isShow === item.num1.value ? true : false;
+                    item.num2.isSelected = this.isShow === item.num2.value ? true : false;
+                    item.num3.isSelected = this.isShow === item.num3.value ? true : false;
                 }, this);
             },
             selectPos: function (obj) {
@@ -169,12 +175,17 @@
                     item.num3.isSelected = false;
                 });
                 obj.isSelected = true;
-                this.formItem.isShow = obj.value;
+                this.isShow = obj.value;
             }
         },
         mounted () {
             this.init();
         },
+        watch: {
+            isShow (val) {
+                this.init();
+            }
+        }
     };
 </script>
 
@@ -191,19 +202,22 @@
     .pos_hover {
         background-color: yellow;
     }
-    .pos-table-l{
+
+    .pos-table-l {
         width: 151px;
         text-align: center;
         border-left: 1px solid #e9eaec;
         border-top: 1px solid #e9eaec;
     }
-    .pos-table-l td{
+
+    .pos-table-l td {
         border-right: 1px solid #e9eaec;
         border-bottom: 1px solid #e9eaec;
         padding: 5px;
         cursor: pointer;
     }
-    .pos-table-l td:hover{
+
+    .pos-table-l td:hover {
         background-color: yellow;
     }
 </style>
