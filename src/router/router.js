@@ -91,6 +91,7 @@ export const otherRouter = {
         {path: 'market/add-link', title: '添加友情链接', name: 'add-link', component: () => import('@/views/market/add-link.vue')},
         {path: 'market/links-cato-list', title: '管理友链分类', name: 'links-cato-list', component: () => import('@/views/market/links-cato-list.vue')},
         {path: 'market/add-links-cato', title: '添加友链分类', name: 'add-links-cato', component: () => import('@/views/market/add-links-cato.vue')},
+        {path: 'settings/add-str-filter', title: '添加敏感词', name: 'add-str-filter', component: () => import('@/views/settings/add-str-filter.vue')},
     ]
 }
 
@@ -263,14 +264,14 @@ export const appRouter = [
                 icon: 'ios-color-filter-outline',
                 name: 'str-filter-list',
                 title: '敏感词管理',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+                component: resolve => { require(['@/views/settings/str-filter-list.vue'], resolve) }
             },
             {
                 path: 'attachment',
                 icon: 'android-attach',
                 name: 'attachment',
                 title: '附件设置',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/settings/attachment.vue'], resolve) }
             }
         ]
     },
