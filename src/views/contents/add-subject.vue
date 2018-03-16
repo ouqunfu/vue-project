@@ -98,62 +98,6 @@
         },
         data () {
             return {
-                columns: [
-                    {
-                        title: '用户组',
-                        key: 'userGroup'
-                    },
-                    {
-                        title: '浏览',
-                        key: 'browse',
-                        render: (h, params) => {
-                            return h('div', [
-                                h('checkbox', {
-                                    props: {
-                                        type: 'default'
-                                    },
-                                    style: {
-                                        width: '60px',
-                                        height: '30px',
-                                        'padding-left': '5px'
-                                    }
-                                })
-                            ]);
-                        }
-                    },
-                    {
-                        title: '下载',
-                        type: 'download',
-                        render: (h, params) => {
-                            return h('div', [
-                                h('checkbox', {
-                                    props: {
-                                        type: 'default'
-                                    },
-                                    style: {
-                                        width: '60px',
-                                        height: '30px',
-                                        'padding-left': '5px'
-                                    }
-                                })
-                            ]);
-                        }
-                    }
-                ],
-                data: [
-                    {
-                        userGroup: '管理员'
-                    },
-                    {
-                        userGroup: '文章管理员'
-                    },
-                    {
-                        userGroup: '一般会员'
-                    },
-                    {
-                        userGroup: '游客'
-                    }
-                ],
                 formItem: {
                     parent: '0',
                     isNav: '1',

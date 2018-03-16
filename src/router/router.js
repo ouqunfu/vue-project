@@ -92,6 +92,8 @@ export const otherRouter = {
         {path: 'market/links-cato-list', title: '管理友链分类', name: 'links-cato-list', component: () => import('@/views/market/links-cato-list.vue')},
         {path: 'market/add-links-cato', title: '添加友链分类', name: 'add-links-cato', component: () => import('@/views/market/add-links-cato.vue')},
         {path: 'settings/add-str-filter', title: '添加敏感词', name: 'add-str-filter', component: () => import('@/views/settings/add-str-filter.vue')},
+        {path: 'customs/add-content-field', title: '添加内容字段', name: 'add-content-field', component: () => import('@/views/customs/add-content-field.vue')},
+        {path: 'customs/add-user-field', title: '添加用户字段', name: 'add-user-field', component: () => import('@/views/customs/add-user-field.vue')},
     ]
 }
 
@@ -283,18 +285,18 @@ export const appRouter = [
         component: Main,
         children: [
             {
-                path: 'list-content-field',
+                path: 'content-field-list',
                 icon: 'edit',
-                name: 'list-content-field',
+                name: 'content-field-list',
                 title: '内容字段',
-                component: resolve => { require(['@/views/group/page1/page1.vue'], resolve) }
+                component: resolve => { require(['@/views/customs/content-field-list.vue'], resolve) }
             },
             {
-                path: 'list-user-field',
+                path: 'user-field-list',
                 icon: 'edit',
-                name: 'list-user-field',
+                name: 'user-field-list',
                 title: '用户字段',
-                component: resolve => { require(['@/views/group/page2/page2.vue'], resolve) }
+                component: resolve => { require(['@/views/customs/user-field-list.vue'], resolve) }
             }
         ]
     },
