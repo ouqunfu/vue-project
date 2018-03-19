@@ -124,8 +124,9 @@
                 this.data.splice(index, 1);
             },
             fetchData () {
+                console.log(this.$ajax);
                 //请求方法，根据实际情况使用
-                this.$ajax.get('http://my.website.com/sys/user/lists').then((res) => {
+                this.$ajax.get('/sys/user/lists').then((res) => {
                     //res 为成功回调的响应
                     console.log(res.data);
                 });
