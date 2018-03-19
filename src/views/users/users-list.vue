@@ -105,6 +105,14 @@
                 ]
             };
         },
+        watch: {
+            '$route': function () {
+                this.fetchData();
+            }
+        },
+        mounted () {
+            this.fetchData();
+        },
         methods: {
             show (index) {
                 this.$Modal.info({
@@ -114,6 +122,13 @@
             },
             remove (index) {
                 this.data.splice(index, 1);
+            },
+            fetchData () {
+                //请求方法，根据实际情况使用
+                this.$ajax.get('http://my.website.com/sys/user/lists').then((res) => {
+                    //res 为成功回调的响应
+                    console.log(res.data);
+                });
             }
         }
     };
